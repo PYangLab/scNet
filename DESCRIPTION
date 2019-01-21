@@ -1,7 +1,7 @@
 Package: scNet
 Type: Package
 Title: Single cell RNA-sequencing data analysis package
-Version: 0.1.0
+Version: 0.1.1
 Author: Taiyun Kim, Pengyi Yang, Shila Ghazanfar
 Maintainer: Taiyun Kim <taiyun.kim@sydney.edu.au>
 Description: A collection of single cell RNA-sequencing data anlysis functions including normalisation, mixture modelling, clustering and cell type correction.
