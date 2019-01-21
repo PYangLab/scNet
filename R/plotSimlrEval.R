@@ -56,14 +56,19 @@
 
 
   p <- ggplot(med, aes( x = data1, y = median, fill = dist1)) +
-    geom_bar(stat = "identity", position = "dodge")  +
-    geom_errorbar(aes(ymin = median-se, ymax = median+se),
-                  width = .2,
-                  position = position_dodge(.9)) +
+    geom_bar(stat = "identity", position = "dodge")
+
+  if (any(is.na(med$se))) {
+    p <- p +
+      geom_errorbar(aes(ymin = median-se, ymax = median+se),
+                    width = .2,
+                    position = position_dodge(.9))
+  }
+  p <- p +
     scale_fill_manual("legend",
                       values = c("euclidean" = "#fc4e2a",
                                  "spearman" = "#a6bddb", "pearson" = "#054287")) +
-    labs(title = "NMI bar plot (median + se)", x = "", y = "NMI values") +
+    labs(title = "NMI bar plot [median + (se)]", x = "", y = "NMI values") +
     scale_y_continuous(limits = c(0, 1)) +
     theme(axis.text.y=element_blank(),
           axis.ticks.y=element_blank()) +
